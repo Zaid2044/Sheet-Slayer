@@ -12,8 +12,12 @@ while True:
 
     cv2.imshow("Sheet Slayer", frame)
 
-    if cv2.waitKey(1) & 0xFF == ord('q'):
+    key = cv2.waitKey(1) & 0xFF
+    if key == ord('q'):
         break
+    
+    if key == ord(' '):
+        print("Frame captured!")
 
 cap.release()
 cv2.destroyAllWindows()
