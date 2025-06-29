@@ -52,9 +52,9 @@ pip install -r requirements.txt
 ```bash
 python app.py
 ```
-*    A window will appear with your webcam feed. Use the following controls:
-**[SPACE]** - Scan: Captures the current frame and detects text.
-**[S]** - Save: Saves the currently displayed text detections to slayed.csv.
-**[C]** - Clear: Clears the bounding boxes from the screen.
-**[B]** - Browse: Opens a file dialog to process a static image.
-**[Q]** - Quit: Closes the application and returns you to the mortal realm.
+**A window will appear with your webcam feed. Use the following controls:**
+*   **[SPACE]** - Scan: Captures the current frame and detects text.
+*   **[S]** - Save: Saves the currently displayed text detections to slayed.csv.
+*   **[C]** - Clear: Clears the bounding boxes from the screen.
+*   **[B]** - Browse: Opens a file dialog to process a static image.
+*   **[Q]** - Quit: Closes the application and returns you to the mortal realm.
