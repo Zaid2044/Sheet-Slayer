@@ -61,6 +61,7 @@ while True:
             img = cv2.imread(filepath)
             if img is not None:
                 img_data = process_image_and_get_data(img)
+                ocr_data = img_data
                 
                 n_boxes = len(img_data['text'])
                 for i in range(n_boxes):
