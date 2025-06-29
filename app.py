@@ -59,17 +59,18 @@ while True:
         filepath = filedialog.askopenfilename()
         if filepath:
             img = cv2.imread(filepath)
-            img_data = process_image_and_get_data(img)
-            
-            n_boxes = len(img_data['text'])
-            for i in range(n_boxes):
-                if int(img_data['conf'][i]) > 60:
-                    x, y, w, h = img_data['left'][i], img_data['top'][i], img_data['width'][i], img_data['height'][i]
-                    cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
-            
-            cv2.imshow("Processed Image", img)
-            cv2.waitKey(0)
-            cv2.destroyWindow("Processed Image")
+            if img is not None:
+                img_data = process_image_and_get_data(img)
+                
+                n_boxes = len(img_data['text'])
+                for i in range(n_boxes):
+                    if int(img_data['conf'][i]) > 60:
+                        x, y, w, h = img_data['left'][i], img_data['top'][i], img_data['width'][i], img_data['height'][i]
+                        cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
+                
+                cv2.imshow("Processed Image", img)
+                cv2.waitKey(0)
+                cv2.destroyWindow("Processed Image")
 
 cap.release()
 cv2.destroyAllWindows()
