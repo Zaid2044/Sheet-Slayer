@@ -2,6 +2,10 @@ import cv2
 import pytesseract
 import csv
 
+def process_image_and_get_data(frame):
+    data = pytesseract.image_to_data(frame, output_type=pytesseract.Output.DICT)
+    return data
+
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 cap = cv2.VideoCapture(0)
@@ -26,7 +30,7 @@ while True:
         break
     
     if key == ord(' '):
-        ocr_data = pytesseract.image_to_data(frame, output_type=pytesseract.Output.DICT)
+        ocr_data = process_image_and_get_data(frame)
     
     if key == ord('c'):
         ocr_data = None
