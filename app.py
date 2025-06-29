@@ -29,6 +29,18 @@ while True:
     
     if key == ord('c'):
         ocr_data = None
+    
+    if key == ord('s') and ocr_data:
+        extracted_text = []
+        n_boxes = len(ocr_data['text'])
+        for i in range(n_boxes):
+            if int(ocr_data['conf'][i]) > 60:
+                extracted_text.append(ocr_data['text'][i])
+        
+        full_text = " ".join(extracted_text)
+        print("--- SAVING TEXT ---")
+        print(full_text)
+        print("-------------------")
 
 cap.release()
 cv2.destroyAllWindows()
