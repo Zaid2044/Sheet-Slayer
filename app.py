@@ -1,5 +1,6 @@
 import cv2
 import pytesseract
+import csv
 
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
@@ -38,9 +39,15 @@ while True:
                 extracted_text.append(ocr_data['text'][i])
         
         full_text = " ".join(extracted_text)
-        print("--- SAVING TEXT ---")
-        print(full_text)
-        print("-------------------")
+        if full_text.strip():
+            with open('slayed.csv', 'w', newline='', encoding='utf-8') as f:
+                writer = csv.writer(f)
+                writer.writerow(['Extracted Text'])
+                writer.writerow([full_text])
+            
+            cv2.putText(frame, "SAVED TO slayed.csv", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+            cv2.imshow("Sheet Slayer", frame)
+            cv2.waitKey(1000)
 
 cap.release()
 cv2.destroyAllWindows()
