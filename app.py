@@ -18,6 +18,7 @@ while True:
     
     if key == ord(' '):
         print("Frame captured!")
+        text = pytesseract.image_to_string(frame)
 
 cap.release()
 cv2.destroyAllWindows()
