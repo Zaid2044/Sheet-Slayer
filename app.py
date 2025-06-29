@@ -3,11 +3,11 @@ import pytesseract
 import csv
 from tkinter import Tk, filedialog
 
+pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+
 def process_image_and_get_data(frame):
     data = pytesseract.image_to_data(frame, output_type=pytesseract.Output.DICT)
     return data
-
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 cap = cv2.VideoCapture(0)
 ocr_data = None
@@ -53,7 +53,7 @@ while True:
             cv2.putText(frame, "SAVED TO slayed.csv", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
             cv2.imshow("Sheet Slayer", frame)
             cv2.waitKey(1000)
-
+    
     if key == ord('b'):
         Tk().withdraw()
         filepath = filedialog.askopenfilename()
