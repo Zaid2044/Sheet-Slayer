@@ -17,12 +17,13 @@ while True:
         break
     
     if key == ord(' '):
-        print("Frame captured!")
         text = pytesseract.image_to_string(frame)
+        data = pytesseract.image_to_data(frame, output_type=pytesseract.Output.DICT)
+        
         if text.strip():
             print("--- OCR Result ---")
             print(text)
-            print("--------------------")   
+            print("--------------------")
 
 cap.release()
 cv2.destroyAllWindows()
