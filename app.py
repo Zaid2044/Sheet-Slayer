@@ -19,7 +19,11 @@ while True:
     if key == ord(' '):
         text = pytesseract.image_to_string(frame)
         data = pytesseract.image_to_data(frame, output_type=pytesseract.Output.DICT)
-        
+        n_boxes = len(data['text'])
+        for i in range(n_boxes):
+            x, y, w, h = data['left'][i], data['top'][i], data['width'][i], data['height'][i]
+            cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+
         if text.strip():
             print("--- OCR Result ---")
             print(text)
