@@ -26,6 +26,9 @@ while True:
     
     if key == ord(' '):
         ocr_data = pytesseract.image_to_data(frame, output_type=pytesseract.Output.DICT)
+    
+    if key == ord('c'):
+        ocr_data = None
 
 cap.release()
 cv2.destroyAllWindows()
